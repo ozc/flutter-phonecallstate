@@ -1,3 +1,3 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.1] - 17 May 2018.
 
-* TODO: Describe initial release.
+* Listen and return phone call state changes.
