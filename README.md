@@ -1,10 +1,53 @@
 # phonecallstate
 
-A new flutter plugin project.
+Flutter plugin to receive Phone Call State for both iOS and Android.
 
-## Getting Started
 
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
 
-For help on editing plugin code, view the [documentation](https://flutter.io/platform-plugins/#edit-code).
+
+```
+enum PhonecallState { incoming, dialing, connected, disconnected, none }
+enum PhonecallStateError { notimplementedyet  }
+
+...
+  Phonecallstate  phonecallstate;
+  PhonecallState phonecallstatus;
+  
+...
+
+phonecallstate = new Phonecallstate();
+    phonecallstatus = PhonecallState.none;
+
+
+    phonecallstate.setIncomingHandler(() {
+      setState(() {
+        phonecallstatus = PhonecallState.incoming;
+        phonecallstatuslog =  phonecallstatuslog.toString() + PhonecallState.incoming.toString()+"\n";
+      });
+    });
+
+    phonecallstate.setDialingHandler(() {
+      setState(() {
+        phonecallstatus = PhonecallState.dialing;
+        phonecallstatuslog =  phonecallstatuslog.toString() + PhonecallState.dialing.toString()+"\n";
+      });
+    });
+
+    phonecallstate.setConnectedHandler(() {
+      setState(() {
+        phonecallstatus = PhonecallState.connected;
+        phonecallstatuslog =  phonecallstatuslog.toString() + PhonecallState.connected.toString()+"\n";
+      });
+    });
+
+    phonecallstate.setDisconnectedHandler(() {
+      setState(() {
+        phonecallstatus = PhonecallState.disconnected;
+        phonecallstatuslog =  phonecallstatuslog.toString() + PhonecallState.disconnected.toString()+"\n";
+      });
+    });
+
+    phonecallstate.setErrorHandler((msg) {
+
+    });
+    ```
