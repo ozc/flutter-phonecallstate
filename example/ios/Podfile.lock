@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - phonecallstate (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Pods/.symlinks/flutter/ios-release`)
+  - phonecallstate (from `Pods/.symlinks/plugins/phonecallstate/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Pods/.symlinks/flutter/ios-release
+  phonecallstate:
+    :path: Pods/.symlinks/plugins/phonecallstate/ios
+
+SPEC CHECKSUMS:
+  Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
+  phonecallstate: ae2fafcdc1684390741cba4de54e63662a8937b3
+
+PODFILE CHECKSUM: 70e69985f01fdaffe3180d3ae5e73472304a9371
+
+COCOAPODS: 1.4.0
