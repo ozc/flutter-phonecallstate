@@ -2,7 +2,9 @@
 
 Flutter plugin to receive Phone Call State for both iOS and Android.
 
-
+Update:
+- Modified pubspec.yaml file to Dart2+
+- Named version as 1.0.1
 
 
 ```
