@@ -41,6 +41,12 @@ class Phonecallstate {
     errorHandler = handler;
   }
 
+  static Future<String>  incomingCallNumber() async {
+    final String version = await _channel.invokeMethod('getIncomingCallNumber');
+    print("number : "+version);
+    return version;
+  }
+
 
   Future platformCallHandler(MethodCall call) async {
     print("_platformCallHandler call ${call.method} ${call.arguments}");
@@ -48,6 +54,8 @@ class Phonecallstate {
       case "phone.incoming":
         //print("incoming");
         if (incomingHandler != null) {
+          // incomingCallNumber();
+          print("number: "+ call.arguments);
           incomingHandler();
         }
         break;
@@ -77,5 +85,6 @@ class Phonecallstate {
       default:
         print('Unknowm method ${call.method} ');
     }
+  
   }
 }
