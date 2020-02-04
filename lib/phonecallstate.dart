@@ -6,12 +6,14 @@ import 'package:flutter/services.dart';
 
 
 typedef void ErrorHandler(String message);
+// typedef void incomingHandler(String incomingCallNumber);
 
 class Phonecallstate {
   static const MethodChannel _channel =
       const MethodChannel('com.plusdt.phonecallstate');
 
-  VoidCallback incomingHandler;
+  
+  Function incomingHandler;
   VoidCallback dialingHandler;
   VoidCallback connectedHandler;
   VoidCallback disconnectedHandler;
@@ -24,7 +26,7 @@ class Phonecallstate {
 
   Future<dynamic> setTestMode(double seconds) => _channel.invokeMethod('phoneTest.PhoneIncoming', seconds);
 
-  void setIncomingHandler(VoidCallback callback) {
+  void setIncomingHandler(Function callback) {
     incomingHandler = callback;
   }
   void setDialingHandler(VoidCallback callback) {
@@ -41,14 +43,14 @@ class Phonecallstate {
     errorHandler = handler;
   }
 
-
   Future platformCallHandler(MethodCall call) async {
     print("_platformCallHandler call ${call.method} ${call.arguments}");
     switch (call.method) {
       case "phone.incoming":
         //print("incoming");
         if (incomingHandler != null) {
-          incomingHandler();
+          print("number: "+ call.arguments);
+          incomingHandler(call.arguments);
         }
         break;
       case "phone.dialing":
@@ -77,5 +79,6 @@ class Phonecallstate {
       default:
         print('Unknowm method ${call.method} ');
     }
+  
   }
 }

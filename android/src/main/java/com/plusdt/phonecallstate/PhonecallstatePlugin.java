@@ -30,6 +30,7 @@ public class PhonecallstatePlugin implements MethodCallHandler {
   private static final String TAG = "KORDON";//MyClass.class.getSimpleName();
 
   TelephonyManager tm;
+  String incomingCallNumber = "";
 
   //private PhoneStateListener mPhoneListener;
 
@@ -53,14 +54,15 @@ public class PhonecallstatePlugin implements MethodCallHandler {
 
   }
 
+ 
 
+  
   @Override
   public void onMethodCall(MethodCall call, MethodChannel.Result response) {
     if (call.method.equals("phoneTest.PhoneIncoming")) {
         Log.i(TAG,"phoneIncoming Test implementation");
       // TODO: test mode with seconds to wait as parameter
-    }
-    else {
+    }else {
       response.notImplemented();
     }
 
@@ -73,9 +75,14 @@ public class PhonecallstatePlugin implements MethodCallHandler {
         switch (state) {
           case TelephonyManager.CALL_STATE_IDLE:
             channel.invokeMethod("phone.disconnected", true);
+           
             break;
           case TelephonyManager.CALL_STATE_RINGING:
-            channel.invokeMethod("phone.incoming", true);
+            
+           
+            channel.invokeMethod("phone.incoming", incomingNumber);
+            
+            
             break;
           case TelephonyManager.CALL_STATE_OFFHOOK:
             channel.invokeMethod("phone.connected", true);
