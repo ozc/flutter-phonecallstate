@@ -33,10 +33,10 @@ class _MyAppState extends State<MyApp> {
     phonecallstatus = PhonecallState.none;
 
 
-    phonecallstate.setIncomingHandler(() {
+    phonecallstate.setIncomingHandler((String incomingCallNumber) {
       setState(() {
         phonecallstatus = PhonecallState.incoming;
-        phonecallstatuslog =  phonecallstatuslog.toString() + PhonecallState.incoming.toString()+"\n";
+        phonecallstatuslog =  phonecallstatuslog.toString() +" "+ PhonecallState.incoming.toString()+" $incomingCallNumber"+"\n";
       });
     });
 
